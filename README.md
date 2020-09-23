@@ -1,20 +1,21 @@
 # Visualizing CyTOF data with iSEE
-Anne-Maud Ferreira - Statistics department, Stanford University
+
+*Anne-Maud Ferreira - Statistics department, Stanford University*
 
 ## Version information
 
 R version: R version 4.0.2 (2020-06-22) 
+
 Bioconductor version: 3.11
 
-library(FlowRepositoryR)
+```
 library(flowCore)
 library(iSEE)
-library(CyTOFtoolbox)
-library(CytoGLMM)
 library(SingleCellExperiment)
 library(SummarizedExperiment)
 library(tidyverse)
 library(CATALYST)
+```
 
 ## Data
 
