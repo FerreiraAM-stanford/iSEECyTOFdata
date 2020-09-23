@@ -85,6 +85,8 @@ class(sce_data)
 ## [1] "SingleCellExperiment"
 ```
 
+![SingleCellExperiment object structure](https://bioconductor.github.io/BiocWorkshops/202_Das_SingleCellRNASeq/SingleCellExperiment.png)
+
 ## Analysis
 
 ### Clustering analysis with `CATALYST`
@@ -149,3 +151,5 @@ under the *Documentation* section:
 ```
 iSEE(sce_data)
 ```
+
+
