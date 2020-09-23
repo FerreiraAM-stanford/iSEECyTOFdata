@@ -17,6 +17,10 @@ library(tidyverse)
 library(CATALYST)
 ```
 
+## Introduction
+
+The goal of this README page is to show how to create a `SingleCellExperiment` (SCE) from the *.fcs* files and launch the `iSEE` shiny app to perform some data exploration.
+
 ## Data
 
 ### Load the data
@@ -93,7 +97,7 @@ image from the **The Bioconductor 2018 Workshop Compilation** online book.
 
 ### Clustering analysis with `CATALYST`
 
-To perform the clustering, we need to specify the type of the markers on which the clustering will be performed.
+To perform the clustering with the `CATALYST` package, we need to specify the type of the markers on which the clustering will be performed.
 
 ```
 # Specify markers to use for clustering
@@ -147,11 +151,45 @@ reducedDims(sce_data) <- list("UMAP" = dr_umap_data)
 
 ## Interactive visualization of the data
 
-The information about the `iSEE` package can be find at the following link: https://bioconductor.org/packages/release/bioc/html/iSEE.html
-under the *Documentation* section:
+The `iSEE` package provides a shiny app with a combination of interactive panels. Just launch the app with the following command:
 
 ```
 iSEE(sce_data)
 ```
+
+**Disclosure**: All the information compiled below are from the `iSEE` package documentation available online at the following link: https://bioconductor.org/packages/release/bioc/html/iSEE.html under the *Documentation* section.
+
+### Parameters
+
+There are 3 types of parameters available in `iSEE` app:
+
+- Data parameters: to control the parameters which are specific to each plot (e.g. dimensionality reduction input, marker selection);
+- Visual parameters: to determine the visual of each plots (e.g. colors, facet, font);
+- Selection parameters: to control the point selection that the plot will receive.
+
+### Plots
+
+The app have eight default panels. The five following panels were presented during the presentation:
+
+- Reduced dimension plot: to visualize the dimensionality reduction stored in the SCE object (e.g. UMAP). It is a great plot to visualize the different clusters, as well as explore any visual differences between conditions or patients;
+- Row data table: to display the values of the `rowData` slot, i.e. marker metadata;
+- Feature assay plot: to plot the assayed values, i.e. counts and exprs of each marker in the cells. This plot can be used to explore data in 2D plot (marker A versus marker B). It also allows to see the distribution of each marker with a violin plot;
+- Column data table: to display the values of the `colData` slot, i.e. sample metadata;
+- Heatmap: to overview the data for multiple features. This plot shows the assayed values, where the markers are the rows and the cells are the columns.
+
+The 3 additional panels exist:
+
+- Column data plots: sample metadata (colData slot);
+- Row data plots: marker metadata  (rowData slot);
+- Sample assay plots: assayed values (marker intensities) for a particular cell across the markers on the y-axis.
+
+### Additional features
+
+The app also allows:
+
+- To remove and reformat plots;
+- To download the plots;
+- To extract R code to reproduce plots;
+- To extract settings to reproduce panel visualization.
 
 
