@@ -79,7 +79,7 @@ sce_data <- CATALYST::prepData(flowSet_data,
                                               factors = c("patient_id", "condition")),
                                cofactor = 5) # automatically applied arcsinh transformation with cofactor = 5
 # Class
-class(aghaeepour_data)
+class(sce_data)
 ## [1] "SingleCellExperiment"
 ## attr(,"package")
 ## [1] "SingleCellExperiment"
@@ -95,7 +95,7 @@ To perform the clustering, we need to specify the type of the markers on which t
 # Specify markers to use for clustering
 type_markers(sce_data)
 # Cluster
-aghaeepour_data <- cluster(sce_data, 
+sce_data <- cluster(sce_data, 
                            features = type_markers(sce_data),
                            xdim = 10, ydim = 10, maxK = 20, 
                            verbose = FALSE, seed = 1234)
