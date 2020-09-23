@@ -1,7 +1,7 @@
 # Visualizing CyTOF data with iSEE
 Anne-Maud Ferreira - Statistics department, Stanford University
 
-1. Version information
+## Version information
 
 R version: R version 4.0.2 (2020-06-22) 
 Bioconductor version: 3.11
@@ -16,11 +16,11 @@ library(SummarizedExperiment)
 library(tidyverse)
 library(CATALYST)
 
-2. Data
+## Data
 
-2.1. Load the data
+### Load the data
 
-2.1.1. FCS files
+#### FCS files
 
 Read the FCS files as a `flowSet` using the `flowCore` package.
 
@@ -32,7 +32,7 @@ flowSet_data <- read.flowSet(files = fcs_files,
                              path = data_path)
 ```
 
-2.1.2. Marker information
+#### Marker information
 
 The marker file contains information about the markers used in the FCS files. It is composed of 3 columns corresponding to the fcs column names, the antigen and the marker class.
 
@@ -48,7 +48,7 @@ unique(markers_info$marker_class)
 ## [1] "none"  "type"  "state"
 ```
 
-2.1.3. Sample information
+#### Sample information
 
 The samples information describes at least the file name, patient ID and condition. This file may contain any useful additional information for the analysis.
 
@@ -62,7 +62,7 @@ colnames(samples_info)
 ## [1] "filename"   "patient_id" "condition"
 ```
 
-2.2. Prepare the data
+### Prepare the data
 
 The last step is to create a `SingleCellExperiment` (SCE) containing the FCS file values, as well as the metadata. The input parameters are (1) the flowSet, (2) marker's information, (3) sample's information, (4) a list specifying the column names in the sample's information. 
 
@@ -84,9 +84,9 @@ class(aghaeepour_data)
 ## [1] "SingleCellExperiment"
 ```
 
-3. Analysis
+## Analysis
 
-3.1. Clustering analysis with `CATALYST`
+### Clustering analysis with `CATALYST`
 
 To perform the clustering, we need to specify the type of the markers on which the clustering will be performed.
 
@@ -100,7 +100,7 @@ aghaeepour_data <- cluster(sce_data,
                            verbose = FALSE, seed = 1234)
 ```
 
-3.1.1. Delta area plot
+#### Delta area plot
 
 Based on the delta area plot which represents the stability gained when using *k* clusters, we can determine the optimal number of cluster:
 
@@ -109,7 +109,7 @@ Based on the delta area plot which represents the stability gained when using *k
 metadata(sce_data)$delta_area
 ```
 
-3.1.2. Marker expression's heatmap
+#### Marker expression's heatmap
 
 Once the optimal number of clusters is determined, the marker expressions in each cluster can be visualized in the following heatmap:
 
@@ -118,7 +118,7 @@ Once the optimal number of clusters is determined, the marker expressions in eac
 plotFreqHeatmap(sce_data, k = "meta10")
 ```
 
-3.2 Dimensionality reduction with UMAP
+### Dimensionality reduction with UMAP
 
 The dimensionality reduction (DR) is computed with UMAP, using the `uwot` package.
 
@@ -140,7 +140,7 @@ colnames(dr_umap_data) <- c("X1", "X2")
 reducedDims(sce_data) <- list("UMAP" = dr_umap_data)
 ```
 
-4. Interactive visualization of the data
+## Interactive visualization of the data
 
 ```
 iSEE(sce_data)
