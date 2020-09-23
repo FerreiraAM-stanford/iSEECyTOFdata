@@ -142,6 +142,9 @@ reducedDims(sce_data) <- list("UMAP" = dr_umap_data)
 
 ## Interactive visualization of the data
 
+The information about the `iSEE` package can be find at the following link: https://bioconductor.org/packages/release/bioc/html/iSEE.html
+under the *Documentation* section:
+
 ```
 iSEE(sce_data)
 ```
