@@ -169,7 +169,9 @@ There are 3 types of parameters available in `iSEE` app:
 
 ### Plots
 
-The app have eight default panels. The five following panels were presented during the presentation:
+The app have eight default panels. 
+
+The five following panels were presented during the group meeting:
 
 - Reduced dimension plot: to visualize the dimensionality reduction stored in the SCE object (e.g. UMAP). It is a great plot to visualize the different clusters, as well as explore any visual differences between conditions or patients;
 - Row data table: to display the values of the `rowData` slot, i.e. marker metadata;
