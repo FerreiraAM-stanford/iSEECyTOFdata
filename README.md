@@ -87,6 +87,8 @@ class(sce_data)
 
 ![SingleCellExperiment object structure](https://bioconductor.github.io/BiocWorkshops/202_Das_SingleCellRNASeq/SingleCellExperiment.png)
 
+image from the **The Bioconductor 2018 Workshop Compilation** online book. 
+
 ## Analysis
 
 ### Clustering analysis with `CATALYST`
