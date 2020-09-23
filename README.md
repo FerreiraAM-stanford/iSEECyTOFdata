@@ -13,8 +13,8 @@ library(flowCore)
 library(iSEE)
 library(SingleCellExperiment)
 library(SummarizedExperiment)
-library(tidyverse)
 library(CATALYST)
+library(uwot)
 ```
 
 ## Introduction
@@ -104,9 +104,9 @@ To perform the clustering with the `CATALYST` package, we need to specify the ty
 type_markers(sce_data)
 # Cluster
 sce_data <- cluster(sce_data, 
-                           features = type_markers(sce_data),
-                           xdim = 10, ydim = 10, maxK = 20, 
-                           verbose = FALSE, seed = 1234)
+                    features = type_markers(sce_data),
+                    xdim = 10, ydim = 10, maxK = 20, 
+                    verbose = FALSE, seed = 1234)
 ```
 
 #### Delta area plot
@@ -192,4 +192,18 @@ The app also allows:
 - To extract R code to reproduce plots;
 - To extract settings to reproduce panel visualization.
 
+## References
 
+Rue-Albrecht K, Marini F, Soneson C, Lun ATL (2018). “iSEE: Interactive SummarizedExperiment Explorer.” F1000Research, 7, 741. doi: 10.12688/f1000research.14966.1.
+
+Ellis B, Haaland P, Hahne F, Le Meur N, Gopalakrishnan N, Spidlen J, Jiang M, Finak G (2020). flowCore: flowCore: Basic structures for flow cytometry data. R package version 2.0.1.
+
+Crowell H, Zanotelli V, Chevrier S, Robinson M (2020). CATALYST: Cytometry dATa anALYSis Tools. R package version 1.12.2, https://github.com/HelenaLC/CATALYST.
+
+Lun A, Risso D (2020). SingleCellExperiment: S4 Classes for Single Cell Data. R package version 1.10.1.
+
+https://bioconductor.github.io/BiocWorkshops/
+
+Morgan M, Obenchain V, Hester J, Pagès H (2020). SummarizedExperiment: SummarizedExperiment container. R package version 1.18.2.
+
+https://cran.r-project.org/web/packages/uwot/index.html
