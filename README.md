@@ -4,9 +4,11 @@
 
 ## Version information
 
-R version: R version 4.0.2 (2020-06-22) 
+R version: R version 4.0.3 (2020-10-10) 
 
-Bioconductor version: 3.11
+Bioconductor version: 3.12
+
+iSEE version: 2.2.2
 
 ```
 library(flowCore)
@@ -14,7 +16,7 @@ library(iSEE)
 library(SingleCellExperiment)
 library(SummarizedExperiment)
 library(CATALYST)
-library(uwot)
+library(densvis)
 ```
 
 ## Introduction
@@ -91,6 +93,8 @@ class(sce_data)
 
 ![SingleCellExperiment object structure](https://bioconductor.github.io/BiocWorkshops/202_Das_SingleCellRNASeq/SingleCellExperiment.png)
 
+In the context of CyTOF, columns are cells and rows are markers.
+
 image from the **The Bioconductor 2018 Workshop Compilation** online book. 
 
 ## Analysis
@@ -129,16 +133,16 @@ plotFreqHeatmap(sce_data, k = "meta10")
 
 ### Dimensionality reduction with UMAP
 
-The dimensionality reduction (DR) is computed with UMAP, using the `uwot` package.
+The dimensionality reduction (DR) is computed with UMAP, using the `densvis` package.
 
 ```
 # Extract data from sce object
 umap_data_input <- t(assays(sce_data)$exprs)
 # UMAP dimensionality reduction
 set.seed(1234)
-dr_umap_data <- uwot::umap(umap_data_input, 
-                               n_neighbors = 20, 
-                               min_dist = 0.1)
+dr_umap_data <- densvis::densmap(umap_data_input, 
+                                 dens_frac = 0.5, 
+                                 dens_lambda = 0.5)
 ```
 
 The computed DR is added to the SCE object.
